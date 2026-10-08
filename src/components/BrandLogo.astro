@@ -1,0 +1,18 @@
+---
+// Text/SVG stand-ins for the client logos (the supplied Drive folder contained no logo files).
+// Swap each for the official SVG exported from Figma when available.
+const { name } = Astro.props as { name: string };
+const labels: Record<string, string> = { zomato: 'Zomato', bosch: 'Bosch', loreal: "L'Oréal", vega: 'Vega', dell: 'Dell' };
+---
+<span class={`logo logo--${name}`} role="img" aria-label={labels[name] ?? name}>
+  {name === 'zomato' && <span aria-hidden="true">zomato</span>}
+  {name === 'bosch' && (
+    <>
+      <svg aria-hidden="true" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M5 16h4M23 16h4M16 9v-4M16 27v-4" stroke="currentColor" stroke-width="2.4"/><rect x="9" y="14" width="14" height="4" fill="currentColor"/></svg>
+      <span aria-hidden="true">BOSCH</span>
+    </>
+  )}
+  {name === 'loreal' && <span aria-hidden="true">L’ORÉAL</span>}
+  {name === 'vega' && <span aria-hidden="true">VEGA</span>}
+  {name === 'dell' && <span aria-hidden="true">DELL</span>}
+</span>
