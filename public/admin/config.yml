@@ -1,0 +1,116 @@
+# Decap CMS: edits are committed to GitHub; Netlify then rebuilds the site automatically.
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/upthrust-landing   # <- change me
+  branch: main
+  base_url: https://api.netlify.com             # Netlify's built-in OAuth provider
+  auth_endpoint: auth
+
+local_backend: true        # `npm run cms` + `npm run dev` => edit locally, no login needed
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: services
+    label: Services (slides)
+    label_singular: Service slide
+    folder: src/content/services
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{fields.order}}-{{slug}}"
+    media_folder: /src/assets/services      # images live next to the code so Astro optimises them
+    public_folder: ../../assets/services
+    summary: "{{fields.order}} — {{fields.title}}"
+    sortable_fields: [order, title]
+    fields:
+      - { label: Order, name: order, widget: number, value_type: int, min: 1, hint: "Position of the slide (1 = first)" }
+      - { label: Heading, name: title, widget: string }
+      - { label: Intro sentence, name: intro, widget: text }
+      - { label: Bullet points, name: bullets, widget: list, min: 1, field: { label: Bullet, name: bullet, widget: string } }
+      - { label: Image, name: image, widget: image, choose_url: false }
+      - { label: Image description (alt text), name: imageAlt, widget: string, hint: "Describe the image for screen-reader users" }
+      - { label: Small italic note (optional), name: note, widget: text, required: false }
+
+  - name: settings
+    label: Page content
+    files:
+      - name: home
+        label: Homepage copy
+        file: src/content/home.json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Headline line 1, name: lineTop, widget: string }
+              - { label: Headline line 2, name: lineMiddle, widget: string }
+              - { label: Headline line 3, name: lineBottom, widget: string }
+              - { label: Tagline left, name: strategy, widget: string }
+              - { label: Tagline right, name: comfortable, widget: string }
+              - { label: Disciplines, name: disciplines, widget: list, field: { label: Word, name: word, widget: string } }
+              - { label: Statue image alt text, name: statueAlt, widget: string }
+          - label: Proof strip
+            name: proof
+            widget: object
+            fields:
+              - { label: Count, name: count, widget: string }
+              - { label: Caption, name: caption, widget: string }
+              - { label: Brands (zomato, bosch, loreal, vega, dell), name: brands, widget: list, field: { label: Brand key, name: brand, widget: select, options: [zomato, bosch, loreal, vega, dell] } }
+          - label: Services section
+            name: services
+            widget: object
+            fields:
+              - { label: Eyebrow text, name: eyebrow, widget: string }
+              - { label: Button label, name: cta, widget: string }
+      - name: site
+        label: Site, SEO & footer
+        file: src/content/site.json
+        fields:
+          - { label: Brand name, name: name, widget: string }
+          - { label: Page title (SEO), name: title, widget: string }
+          - { label: Meta description (SEO), name: description, widget: text }
+          - { label: Social share title, name: ogTitle, widget: string }
+          - { label: Social share description, name: ogDescription, widget: text }
+          - label: Navigation
+            name: nav
+            widget: list
+            fields: [ { label: Label, name: label, widget: string }, { label: Link, name: href, widget: string } ]
+          - label: Header button
+            name: headerCta
+            widget: object
+            fields: [ { label: Label, name: label, widget: string }, { label: Link, name: href, widget: string } ]
+          - label: Footer
+            name: footer
+            widget: object
+            fields:
+              - { label: Wordmark, name: wordmark, widget: string }
+              - label: Link columns
+                name: columns
+                widget: list
+                fields:
+                  - { label: Link label, name: linkLabel, widget: string }
+                  - { label: Link URL, name: linkUrl, widget: string }
+                  - { label: Description, name: text, widget: string }
+                  - { label: Email, name: email, widget: string }
+              - { label: Tagline, name: tagline, widget: string }
+              - label: Newsletter
+                name: newsletter
+                widget: object
+                fields:
+                  - { label: Heading, name: heading, widget: string }
+                  - { label: Consent text, name: consent, widget: text }
+                  - { label: Email placeholder, name: placeholder, widget: string }
+                  - { label: Button label, name: button, widget: string }
+                  - { label: Success message, name: success, widget: string }
+              - label: Site links
+                name: sites
+                widget: list
+                fields: [ { label: Label, name: label, widget: string }, { label: URL, name: url, widget: string } ]
+              - label: Social links
+                name: social
+                widget: list
+                fields: [ { label: Label, name: label, widget: string }, { label: URL, name: url, widget: string } ]
+              - { label: Privacy label, name: privacyLabel, widget: string }
+              - { label: Privacy URL, name: privacyUrl, widget: string }
+              - { label: Copyright, name: copyright, widget: string }
