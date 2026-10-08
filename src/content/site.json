@@ -1,0 +1,48 @@
+{
+  "name": "Upthrust Design",
+  "title": "Upthrust Design | Bold design that performs — brand, product & campaign agency",
+  "description": "Upthrust is a design agency for brand identity, digital product and campaign work. Strategy, experience and motion that performs. Trusted by 100+ brands.",
+  "ogTitle": "Upthrust Design — Bold design that performs",
+  "ogDescription": "Brand strategy, visual identity, product design and campaign production for brands that want their design to perform.",
+  "nav": [
+    { "label": "What we do", "href": "#services" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "headerCta": { "label": "Contact us", "href": "#contact" },
+  "footer": {
+    "wordmark": "UPTHRUST DESIGN",
+    "columns": [
+      {
+        "linkLabel": "upthrust.agency",
+        "linkUrl": "https://upthrust.agency",
+        "text": "Brand, product and campaign design.",
+        "email": "hello@upthrust.agency"
+      },
+      {
+        "linkLabel": "upthrust.io",
+        "linkUrl": "https://upthrust.io",
+        "text": "Product engineering and growth.",
+        "email": "hello@upthrust.io"
+      }
+    ],
+    "tagline": "Design that earns attention, then proves it worked.",
+    "newsletter": {
+      "heading": "Sign up for our emails",
+      "consent": "By checking this box sign up for our newsletter and receive marketing emails and updates on our services. You can unsubscribe at any time.",
+      "placeholder": "typehere@youremail.com",
+      "button": "Submit",
+      "success": "Thanks — you're on the list. We'll be in touch soon."
+    },
+    "sites": [
+      { "label": "upthrust.agency", "url": "https://upthrust.agency" },
+      { "label": "upthrust.io", "url": "https://upthrust.io" }
+    ],
+    "social": [
+      { "label": "Instagram", "url": "https://www.instagram.com/" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/" }
+    ],
+    "privacyLabel": "Privacy Policy",
+    "privacyUrl": "#",
+    "copyright": "© Upthrust Design"
+  }
+}

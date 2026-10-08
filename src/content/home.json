@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "lineTop": "Bold design",
+    "lineMiddle": "that",
+    "lineBottom": "performs",
+    "strategy": "Strategy is cheaper",
+    "comfortable": "Comfortable is expensive",
+    "disciplines": ["Identity", "Experience", "Motion"],
+    "statueAlt": "Iridescent dark-blue marble bust of a classical sculpture"
+  },
+  "proof": {
+    "count": "100+",
+    "caption": "Brands trusted us to define how they're seen.",
+    "brands": ["zomato", "bosch", "loreal", "vega", "dell", "loreal"]
+  },
+  "services": {
+    "eyebrow": "What can we do for you",
+    "cta": "Contact"
+  }
+}
