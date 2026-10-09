@@ -1,7 +1,7 @@
 # Decap CMS: edits are committed to GitHub; Netlify then rebuilds the site automatically.
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/upthrust-landing   # <- change me
+  repo: aditya24736/upthrust-landing   # <- change me
   branch: main
   base_url: https://api.netlify.com             # Netlify's built-in OAuth provider
   auth_endpoint: auth

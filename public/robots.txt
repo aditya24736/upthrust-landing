@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /thanks/
 
-Sitemap: https://YOUR-SITE.netlify.app/sitemap-index.xml
+Sitemap: https://upthrust-aditya.netlify.app/sitemap-index.xml
