@@ -6,7 +6,7 @@ bullets:
   - Brand strategy & positioning
   - Messaging & tone of voice
   - Audience & competitor research
-  - Workshops & Strategy sprints
+  - Workshops & creative sprints
 image: ../../assets/services/strategy.webp
 imageAlt: Collage of strategy deliverables including audience personas,
   typography guidelines and workshop boards
