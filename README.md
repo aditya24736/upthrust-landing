@@ -52,16 +52,22 @@ No secrets are used or committed (`.env` is git-ignored).
 
 ## SEO / accessibility / performance
 Unique title + description, one H1, canonical, Open Graph/Twitter, JSON-LD (Organization, WebSite, service ItemList), sitemap, robots. Alt text, skip link, visible focus, labelled form, keyboard-scrollable slides, reduced-motion respected. Self-hosted subset fonts (~80 KB), responsive WebP via `astro:assets`, lazy-loaded below-fold images, deferred GTM.
-Local Lighthouse (mobile): Performance 93 · Accessibility 100 · Best Practices 100 · SEO 100.
+Local Lighthouse (mobile): Performance 90 · Accessibility 100 · Best Practices 100 · SEO 100 (re-check on the live URL).
 
 ## Safe updates after launch
 Work on a branch → Netlify deploy preview → review → merge to `main`. Content edits via CMS commit to `main` (switch Decap to `publish_mode: editorial_workflow` for review steps). Roll back with Netlify “Publish deploy” on a previous build.
 
 ## AI tools used
-Claude was used to scaffold the project, render the supplied GLB models to images (three.js in headless Chrome), draft CSS and scripts, and run Lighthouse. I reviewed the code, tuned the visual match against Figma, and tested the form flow.
+Claude was used to scaffold the project, extract and process the assets from the Figma export (including rendering regions of the large board SVG), draft CSS and scripts, and run Lighthouse. I reviewed the code, tuned the visual match against Figma, and tested the form flow.
+
+## Assets (all from the supplied Figma board)
+- Statue, curve, client logos (Zomato, Bosch, Vega, Dell), the four services mosaics and the photos inside them come from the Figma export; the statue crop and the curve placement follow the exact Figma coordinates.
+- L'Oréal logo, rocket logo, footer mark, blueprint drawing and the hero lettering are vector shapes in the Figma SVG; I rendered them at 2x and extracted them as transparent WebP.
+- The hero lettering ("BOLD DESIGN / THAT / PERFORMS") is an envelope-warped vector in Figma, which CSS cannot reproduce exactly, so it is used as an image. The real heading text is kept in the HTML as a visually hidden `<h1>` for SEO and screen readers.
+- The warped grid texture is my recreation (SVG), not an export.
 
 ## Known limitations / next steps
-- The Drive folder had no logos, blueprint drawing or service imagery: logos are text/SVG stand-ins, the blueprint is a generated SVG, service images are placeholder collages → replace with Figma exports.
-- Statue iridescence is an approximation of the Blender shader.
-- Privacy Policy link is `#`; footer body copy is placeholder-style.
-- With more time: visual regression tests, CMS live preview, real logo SVGs, analytics consent banner.
+- Headline artwork is an image: changing the hero words in the CMS updates the hidden H1 but not the artwork (re-export from Figma).
+- Footer description lines and the Privacy Policy link (`#`) are placeholders; edit them in the CMS.
+- Mobile hero is a re-composition of the desktop artwork (the Figma has no separate mobile layout for text sizes).
+- With more time: visual regression tests, CMS live preview, an analytics consent banner, rendering the hero artwork at 3x for very high-density screens.
