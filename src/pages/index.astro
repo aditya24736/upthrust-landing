@@ -7,6 +7,13 @@ import site from '../content/site.json';
 import home from '../content/home.json';
 import statue from '../assets/hero/statue.png';
 import curve from '../assets/hero/curve.webp';
+import hlTop from '../assets/hero/hl-top.webp';
+import hlThat from '../assets/hero/hl-that.webp';
+import hlBot from '../assets/hero/hl-bot.webp';
+import blueprint from '../assets/hero/blueprint.webp';
+import marks from '../assets/hero/marks.webp';
+import rocket from '../assets/brand/rocket.png';
+import mark from '../assets/brand/mark.png';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 const { hero, proof } = home;
@@ -46,7 +53,7 @@ const jsonLd = [
 <BaseLayout {jsonLd}>
   <header class="site-header">
     <a class="brand" href="/" aria-label="Upthrust — home">
-      <svg aria-hidden="true" viewBox="0 0 32 32" width="30" height="30"><path fill="currentColor" d="M27.500 3.200c-5.600.1-10.200 2.300-13.200 6.400l-5.100.5c-.7.1-1.300.5-1.700 1.100L4 15.700c-.4.600.1 1.300.8 1.200l4.100-.6-.9 1.300c-.4.600-.3 1.300.2 1.800l5.300 5.300c.5.500 1.300.6 1.800.2l1.300-.9-.6 4.100c-.1.700.6 1.200 1.200.8l4.500-3.500c.6-.4 1-1 1.100-1.700l.5-5.100c4.100-3 6.300-7.600 6.400-13.200 0-.8-.5-1.300-1.300-1.300zM21.600 12.900a2.600 2.600 0 1 1 0-5.200 2.600 2.600 0 0 1 0 5.200zM8.300 21.600c-1.800.4-3 2-3.200 5.300 3.300-.2 4.900-1.400 5.300-3.200z"/></svg>
+      <Image src={rocket} alt="" width={31} height={30} densities={[1, 2]} loading="eager" />
       <span>Upthrust</span>
     </a>
     <a class="header-cta" href={site.headerCta.href}>{site.headerCta.label}</a>
@@ -63,37 +70,39 @@ const jsonLd = [
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="stage">
-        <h1 id="hero-title" class="headline">
-          <span class="h h--top">{hero.lineTop}</span>
-          <span class="h h--mid">{hero.lineMiddle}</span>
-          <span class="h h--bot">{hero.lineBottom}</span>
-        </h1>
+        <Image class="bp" src={blueprint} alt="" widths={[480, 960]} sizes="(max-width: 700px) 70vw, 42vw" format="webp" quality={72} loading="eager" decoding="async" layout="fixed" width={960} />
+        <h1 id="hero-title" class="sr-only">{hero.lineTop} {hero.lineMiddle} {hero.lineBottom}</h1>
+        <!-- The warped lettering is the exact vector artwork from Figma (CSS cannot reproduce an envelope warp). The real H1 text above stays in the HTML for SEO and screen readers. -->
+        <Image class="hl hl--top" src={hlTop} alt="" widths={[720, 1440, 2160]} sizes="95vw" format="webp" quality={95} loading="eager" fetchpriority="high" layout="fixed" width={1363} />
+        <Image class="hl hl--that" src={hlThat} alt="" widths={[300, 600]} sizes="21vw" format="webp" quality={95} loading="eager" layout="fixed" width={297} />
+        <Image class="hl hl--bot" src={hlBot} alt="" widths={[720, 1440, 2160]} sizes="79vw" format="webp" quality={95} loading="eager" fetchpriority="high" layout="fixed" width={1130} />
 
         <Image
           class="statue"
           src={statue}
           alt={hero.statueAlt}
-          widths={[420, 640, 900]}
-          sizes="(max-width: 700px) 66vw, 38vw"
+          widths={[480, 760, 1100]}
+          sizes="(max-width: 700px) 56vw, 37vw"
           format="webp"
           quality={82}
           loading="eager"
           fetchpriority="high"
           layout="fixed"
-          width={420}
+          width={760}
         />
+        <Image class="marks__art" src={marks} alt="" widths={[720, 1440, 2160]} sizes="100vw" format="webp" quality={95} loading="eager" layout="fixed" width={1440} />
 
         <p class="tag tag--strategy">Strategy is<br /><span class="mark-circle">cheaper
-          <svg aria-hidden="true" viewBox="0 0 96 40" preserveAspectRatio="none"><path d="M14 9C34-2 86 0 92 17 97 33 46 39 17 31 -3 25 1 9 34 5" fill="none" stroke="#ff4a0a" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="mk" aria-hidden="true" viewBox="0 0 96 40" preserveAspectRatio="none"><path d="M14 9C34-2 86 0 92 17 97 33 46 39 17 31 -3 25 1 9 34 5" fill="none" stroke="#ff4a0a" stroke-width="2.2" stroke-linecap="round"/></svg>
         </span></p>
 
         <p class="tag tag--comfort">Comfortable<br />is expensive
-          <svg class="wave" aria-hidden="true" viewBox="0 0 150 8" preserveAspectRatio="none"><path d="M1 4q4.500-4.500 9 0t9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0" fill="none" stroke="#ff4a0a" stroke-width="1.600" stroke-linecap="round"/></svg>
+          <svg class="wave mk" aria-hidden="true" viewBox="0 0 150 8" preserveAspectRatio="none"><path d="M1 4q4.500-4.500 9 0t9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0 9 0" fill="none" stroke="#ff4a0a" stroke-width="1.600" stroke-linecap="round"/></svg>
         </p>
 
         <ul class="tag tag--disciplines" aria-label="Disciplines">
           {hero.disciplines.map((d, i) => (
-            <li>{i === hero.disciplines.length - 1 ? <span class="brush">{d}<svg aria-hidden="true" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 6C25 2 60 1 99 3 60 3 30 5 6 7" fill="none" stroke="#ff4a0a" stroke-width="1.800" stroke-linecap="round"/></svg></span> : d}<span aria-hidden="true"> ·</span></li>
+            <li>{i === hero.disciplines.length - 1 ? <span class="brush">{d}<svg class="mk" aria-hidden="true" viewBox="0 0 100 8" preserveAspectRatio="none"><path d="M1 6C25 2 60 1 99 3 60 3 30 5 6 7" fill="none" stroke="#ff4a0a" stroke-width="1.800" stroke-linecap="round"/></svg></span> : d}<span aria-hidden="true"> ·</span></li>
           ))}
         </ul>
       </div>
@@ -110,13 +119,14 @@ const jsonLd = [
       <div class="services__sticky">
         <div class="services__scroller" tabindex="0" role="region" aria-label="Services, scroll sideways to browse">
           <div class="services__track">
-            <Image class="services__curve" src={curve} alt="" widths={[1200, 2000, 3200]} sizes="400vw" format="webp" quality={78} loading="lazy" decoding="async" layout="fixed" width={3200} />
+            <Image class="services__curve services__curve--a" src={curve} alt="" widths={[1600, 2800, 4320]} sizes="300vw" format="webp" quality={78} loading="lazy" decoding="async" layout="fixed" width={4320} />
+            <Image class="services__curve services__curve--b" src={curve} alt="" widths={[1600, 2800, 4020]} sizes="280vw" format="webp" quality={78} loading="lazy" decoding="async" layout="fixed" width={4020} />
             {services.map((s, i) => (
               <article class="slide" aria-labelledby={`svc-${i}`}>
                 <p class="slide__eyebrow">{home.services.eyebrow}</p>
                 <h2 id={`svc-${i}`} class="slide__title">{s.data.title}</h2>
                 <div class="slide__body">
-                  <Image class="slide__img" src={s.data.image} alt={s.data.imageAlt} widths={[420, 640, 960]} sizes="(max-width: 900px) 88vw, 36vw" format="webp" quality={80} loading="lazy" decoding="async" layout="fixed" width={640} />
+                  <Image class="slide__img" src={s.data.image} alt={s.data.imageAlt} widths={[480, 760, 984]} sizes="(max-width: 700px) 80vw, (max-width: 1023px) 45vw, 34vw" format="webp" quality={80} loading="lazy" decoding="async" layout="fixed" width={984} />
                   <div class="slide__copy">
                     <p class="slide__intro">{s.data.intro}</p>
                     <ul class="slide__list">
@@ -136,7 +146,7 @@ const jsonLd = [
 
   <footer id="contact" class="footer">
     <p class="footer__word" aria-hidden="true">
-      <span>UPTHRUST</span><svg class="footer__mark" viewBox="0 0 40 46"><path fill="#ff4a0a" d="M20 46C8 38 0 26 0 14c0-4 3-7 7-6 5 1 9 4 13 9 4-5 8-8 13-9 4-1 7 2 7 6 0 12-8 24-20 32z"/></svg><span>DESIGN</span>
+      <span>UPTHRUST</span><Image class="footer__mark" src={mark} alt="" width={120} height={111} loading="lazy" /><span>DESIGN</span>
     </p>
     <div class="footer__grid">
       <div class="footer__left">
