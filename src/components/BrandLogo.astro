@@ -1,18 +1,24 @@
 ---
-// Text/SVG stand-ins for the client logos (the supplied Drive folder contained no logo files).
-// Swap each for the official SVG exported from Figma when available.
+import { Image } from 'astro:assets';
+import zomato from '../assets/brand/zomato.png';
+import bosch from '../assets/brand/bosch.png';
+import loreal from '../assets/brand/loreal.png';
+import vega from '../assets/brand/vega.png';
+import dell from '../assets/brand/dell.png';
+
+// Official logo files exported from the Figma board. They are recoloured to solid black in CSS (as in the design).
 const { name } = Astro.props as { name: string };
-const labels: Record<string, string> = { zomato: 'Zomato', bosch: 'Bosch', loreal: "L'Oréal", vega: 'Vega', dell: 'Dell' };
+const logos: Record<string, { src: ImageMetadata; alt: string }> = {
+  zomato: { src: zomato, alt: 'Zomato' },
+  bosch: { src: bosch, alt: 'Bosch' },
+  loreal: { src: loreal, alt: "L'Oréal" },
+  vega: { src: vega, alt: 'Vega' },
+  dell: { src: dell, alt: 'Dell' },
+};
+const logo = logos[name];
 ---
-<span class={`logo logo--${name}`} role="img" aria-label={labels[name] ?? name}>
-  {name === 'zomato' && <span aria-hidden="true">zomato</span>}
-  {name === 'bosch' && (
-    <>
-      <svg aria-hidden="true" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M5 16h4M23 16h4M16 9v-4M16 27v-4" stroke="currentColor" stroke-width="2.4"/><rect x="9" y="14" width="14" height="4" fill="currentColor"/></svg>
-      <span aria-hidden="true">BOSCH</span>
-    </>
-  )}
-  {name === 'loreal' && <span aria-hidden="true">L’ORÉAL</span>}
-  {name === 'vega' && <span aria-hidden="true">VEGA</span>}
-  {name === 'dell' && <span aria-hidden="true">DELL</span>}
-</span>
+{logo && (
+  <span class={`logo logo--${name}`}>
+    <Image src={logo.src} alt={logo.alt} widths={[240, 480]} sizes="(max-width: 700px) 30vw, 11vw" format="webp" quality={85} loading="lazy" decoding="async" />
+  </span>
+)}
